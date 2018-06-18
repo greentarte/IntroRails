@@ -1,24 +1,65 @@
-# README
+# Rails Intro(기본 명령어)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+프로그램 버전
 
-Things you may want to cover:
+ruby 2.4.4-p296 
 
-* Ruby version
+ Rails 5.2.0
 
-* System dependencies
+운영체제 Window
 
-* Configuration
+1. `vagrant` 서버 실행
 
-* Database creation
+   **반드시 `Vagrantfile`이 있는 곳**에서 실행해야함. (/students/vagrant)
 
-* Database initialization
+   ```console
+   $ vagrant up
+   $ vagrant ssh
+   $ cd /vagrant
+   ```
 
-* How to run the test suite
+   
 
-* Services (job queues, cache servers, search engines, etc.)
+2. 새로운 Rails 프로젝트 생성
 
-* Deployment instructions
+   ```console
+   $ rails new projectname
+   $ cd projectname
+   ```
 
-* ...
+   
+
+3. Rails 서버 실행
+
+   ```console
+   $ rails server
+   ```
+
+4. 컨트롤러 생성
+
+   ```console
+   $ rails generate controller이름 action1이름 action2이름
+   ```
+
+   
+
+5. routes 및 페이지 설정
+
+   ```ruby
+   # config/routes.rb
+   # localhost:3000으로 요청이오면(루트페이지), home#index를 실행하세요.
+   root 'home#index'
+   # localhost:3000/home/index로 요청이오면, home컨트롤러의 index 액션을 실행하세요.
+   get 'home/index' => 'home#index'
+   ```
+
+   ```ruby
+   # app/controllers/home_controller.rb
+   def index
+   end
+   ```
+
+   ```erb
+   <!-- app/views/home/index.html.erb -->
+   안녕!
+   ```
